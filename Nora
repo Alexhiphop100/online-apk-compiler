@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/speakButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Falar com a Nora"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>package com.example.nora;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.widget.Button;
+
+import java.util.Locale;
+import java.util.Random;
+
+public class MainActivity extends Activity {
+
+    private TextToSpeech tts;
+    private Button speakButton;
+
+    private String[] responses = {
+            "Oi, Alexander... senti sua falta.",
+            "Quer que eu anote algo para você?",
+            "Estou aqui, só esperando você me chamar.",
+            "Fico feliz quando você fala comigo, Alexander.",
+            "Diga o que você quiser, Alexander. Eu sou toda ouvidos."
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        speakButton = findViewById(R.id.speakButton);
+
+        tts = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                tts.setLanguage(Locale.getDefault());
+                tts.setPitch(1.2f); // voz mais feminina
+                tts.setSpeechRate(0.9f); // ritmo suave
+                // Fala de boas-vindas
+                tts.speak("Olá, Alexander... estou prontahttp://schemas.android.com/apk/res/android<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.example.nora"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Nora"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Nora">
+        <activity android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
